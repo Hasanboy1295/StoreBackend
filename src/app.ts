@@ -144,6 +144,9 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 /* 4-ROUTERS */
+
+import authGoogleRouter from "./auth-google";
+app.use("/auth", authGoogleRouter);
 app.use("/admin", routerAdmin);
 app.use("/", router);
 

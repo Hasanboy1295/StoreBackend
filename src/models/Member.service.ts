@@ -1,3 +1,4 @@
+
 import MemberModel from "../schema/Member.model";
 import {
   LoginInput,
@@ -9,7 +10,6 @@ import Errors, { HttpCode, Message } from "../libs/Errors";
 import { MemberStatus, MemberType } from "../libs/enums/member.enum";
 import * as bcrypt from "bcryptjs";
 import { shapeIntoMongooseObjectId } from "../libs/config";
-import { threadCpuUsage } from "process";
 
 class MemberService {
   private readonly memberModel;
@@ -17,6 +17,28 @@ class MemberService {
   //pascalcase
   constructor() {
     this.memberModel = MemberModel;
+  }
+
+  // Google OAuth: find or create user
+  public async findOrCreateGoogleUser(profile: any): Promise<Member> {
+    // Use Google profile id or email as unique identifier
+    const email = profile.emails && profile.emails[0]?.value;
+    if (!email) throw new Error("No email found in Google profile");
+    let user = await this.memberModel.findOne({ memberPhone: email }).exec();
+    if (!user) {
+      // Create new user with Google info
+      user = await this.memberModel.create({
+        memberType: MemberType.USER,
+        memberStatus: MemberStatus.ACTIVE,
+        memberNick: profile.displayName || email,
+        memberPassword: Math.random().toString(36).slice(-8), // random password
+        memberPhone: email,
+        memberAdress: '',
+        memberDesc: 'Google user',
+        memberImage: profile.photos && profile.photos[0]?.value,
+      });
+    }
+    return user;
   }
 
   /* SPA */
