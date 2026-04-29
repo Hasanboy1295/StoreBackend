@@ -31,7 +31,13 @@ passport.use(
       done: VerifyCallback
     ) => {
       try {
-        let user = await memberService.findOrCreateGoogleUser(profile);
+        const googleData = {
+          googleId: profile.id,
+          memberNick: profile.displayName,
+          memberEmail: profile.emails && profile.emails[0] ? profile.emails[0].value : "",
+          memberImage: profile.photos && profile.photos[0] ? profile.photos[0].value : "",
+        };
+        let user = await memberService.findOrCreateGoogleUser(googleData);
         return (done as (err:   any, user?: any) => void)(null, user);
       } catch (err) {
         return (done as (err: any, user?: any) => void)(err as Error, undefined);
