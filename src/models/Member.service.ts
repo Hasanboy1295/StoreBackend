@@ -12,6 +12,11 @@ import { shapeIntoMongooseObjectId } from "../libs/config";
 import { threadCpuUsage } from "process";
 
 class MemberService {
+    // Stub for Google OAuth user creation/finding
+    async findOrCreateGoogleUser(profile: any) {
+      // TODO: Implement actual logic for Google user
+      return null;
+    }
   private readonly memberModel;
 
   //pascalcase

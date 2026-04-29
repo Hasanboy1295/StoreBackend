@@ -1,12 +1,63 @@
+
+// folder, file => KEBAB
+// css => SNAKE
+// - Error handling
+
+// Request:
+//  Traditional Api
+//  Rest Api
+//  GraphQL Api
+//  ...
+
+// Frontend Development:
+//  Traditional FD  =>  SSR  =>  EJS
+//  Modern FD       =>  SPA  =>  REACT
+
+// Cookies:
+//  request join
+//  self destroy
+
+// Validation:
+//  Frontend validation
+//  Backend validation
+//  Database validation
+
+// PM2 COMMANDS:
+//  pm2 ls
+//  pm2 start dist/server.js --name=BURAK
+//  pm2 start "npm run start:prod" --name=BURAK
+//  pm2 stop id
+//  pm2 delete id
+//  pm2 restart id
+// pm2 monit 
+ // pm2 kill
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // TASK ZJ:
 
-function reduceNestedArray(a: any[]) {
-  const result = a.flat(Infinity).reduce((acc, val) => acc + val, 0);
+// function reduceNestedArray(a: any[]) {
+//   const result = a.flat(Infinity).reduce((acc, val) => acc + val, 0);
 
-  console.log(result);
-}
+//   console.log(result);
+// }
 
-reduceNestedArray([1, [1, 2, [4]]]);
+// reduceNestedArray([1, [1, 2, [4]]]);
 
 // Shunday function yozing, u berilgan array ichidagi
 // raqamlarni qiymatini hisoblab qaytarsin.
