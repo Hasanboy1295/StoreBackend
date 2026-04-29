@@ -11,6 +11,11 @@ import * as bcrypt from "bcryptjs";
 import { shapeIntoMongooseObjectId } from "../libs/config";
 
 class MemberService {
+    // Stub for Google OAuth user creation/finding
+    async findOrCreateGoogleUser(profile: any) {
+      // TODO: Implement actual logic for Google user
+      return null;
+    }
   private readonly memberModel;
 
   constructor() {
